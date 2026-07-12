@@ -1,0 +1,5 @@
+[
+  { "type": "Investment Memo", "title": "First public memo", "live": false, "file": "" },
+  { "type": "DCF Model", "title": "First DCF teardown", "live": false, "file": "" },
+  { "type": "LBO Case", "title": "First LBO writeup", "live": false, "file": "" }
+]

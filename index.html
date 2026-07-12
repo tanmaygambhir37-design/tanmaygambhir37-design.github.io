@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tanmay Gambhir — CA · Consultant · Builder</title>
+<meta name="description" content="Tanmay Gambhir — Chartered Accountant, ex-PwC Management Consultant, incoming Bocconi×ESSEC MIM. Building at the intersection of finance, strategy and AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAFAF7;
+    --paper-dim:#F1EFE9;
+    --ink:#14171F;
+    --ink-soft:#4B5164;
+    --navy:#141B2E;
+    --navy-2:#1D2A4A;
+    --gold:#A9792C;
+    --gold-soft:#D9B776;
+    --ledger:#3D6B5C;
+    --line:#DEDAD0;
+    --line-dark:#2A3350;
+    --radius:2px;
+    --maxw:1080px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    line-height:1.08;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+
+  .mono{font-family:'IBM Plex Mono', monospace;}
+
+  a{color:inherit;}
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+
+  /* ---------- NAV ---------- */
+  header.site-nav{
+    position:sticky; top:0; z-index:100;
+    background:rgba(250,250,247,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:var(--maxw); margin:0 auto; padding:16px 28px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .nav-logo{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:600; font-size:15px; letter-spacing:0.02em;
+    text-decoration:none; color:var(--ink);
+  }
+  .nav-logo span{color:var(--gold);}
+  .nav-links{display:flex; gap:28px; list-style:none; margin:0; padding:0;}
+  .nav-links a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px; text-transform:uppercase; letter-spacing:0.08em;
+    text-decoration:none; color:var(--ink-soft);
+    padding-bottom:2px; border-bottom:1px solid transparent;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  .nav-links a:hover, .nav-links a.active{color:var(--ink); border-color:var(--gold);}
+  .nav-toggle{display:none; background:none; border:none; cursor:pointer; padding:4px;}
+  .nav-toggle span{display:block; width:22px; height:2px; background:var(--ink); margin:5px 0;}
+
+  @media (max-width:760px){
+    .nav-links{
+      position:fixed; top:57px; left:0; right:0;
+      flex-direction:column; gap:0;
+      background:var(--paper);
+      border-bottom:1px solid var(--line);
+      max-height:0; overflow:hidden;
+      transition:max-height .25s ease;
+    }
+    .nav-links.open{max-height:400px;}
+    .nav-links a{display:block; padding:14px 28px; border-bottom:1px solid var(--line);}
+    .nav-toggle{display:block;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--navy);
+    color:#EDEAE0;
+    padding:96px 0 0 0;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size:100% 42px;
+    pointer-events:none;
+  }
+  .hero-inner{max-width:var(--maxw); margin:0 auto; padding:0 28px 64px; position:relative;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--gold-soft); margin-bottom:22px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:""; width:26px; height:1px; background:var(--gold-soft); display:inline-block;}
+  .hero h1{
+    font-size:clamp(42px, 7vw, 74px);
+    color:#F6F3EA;
+  }
+  .hero .role{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:clamp(13px,2vw,16px);
+    color:#B9BECC;
+    margin-top:22px;
+    max-width:640px;
+    line-height:1.7;
+  }
+  .hero .role strong{color:var(--gold-soft); font-weight:500;}
+  .hero-cta{display:flex; gap:14px; margin-top:34px; flex-wrap:wrap;}
+
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px; letter-spacing:0.06em; text-transform:uppercase;
+    padding:12px 20px;
+    text-decoration:none;
+    border:1px solid currentColor;
+    border-radius:var(--radius);
+    transition:transform .15s ease, background .15s ease, color .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--gold); border-color:var(--gold); color:var(--navy);}
+  .btn-primary:hover{background:var(--gold-soft); border-color:var(--gold-soft);}
+  .btn-ghost{color:#EDEAE0; border-color:rgba(237,234,224,0.35);}
+  .btn-ghost:hover{border-color:#EDEAE0;}
+  .btn-dark{color:var(--navy); border-color:var(--navy);}
+  .btn-dark:hover{background:var(--navy); color:#EDEAE0;}
+
+  /* ---------- TICKER ---------- */
+  .ticker{
+    border-top:1px solid rgba(237,234,224,0.15);
+    background:var(--navy-2);
+    overflow:hidden;
+    white-space:nowrap;
+    position:relative;
+  }
+  .ticker-track{
+    display:inline-flex;
+    animation:scroll-left 34s linear infinite;
+    padding:14px 0;
+  }
+  @keyframes scroll-left{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+  .ticker-item{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px; letter-spacing:0.04em;
+    color:#C9CDD9;
+    padding:0 26px;
+    border-right:1px solid rgba(255,255,255,0.12);
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .ticker-item .up{color:#7FBFA0;}
+  .ticker-item .flat{color:var(--gold-soft);}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:88px 0;}
+  section.alt{background:var(--paper-dim);}
+  .section-head{margin-bottom:48px; max-width:640px;}
+  .section-num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px; color:var(--gold); letter-spacing:0.1em;
+    display:block; margin-bottom:10px;
+  }
+  .section-head h2{font-size:clamp(28px,4vw,38px);}
+  .section-head p{color:var(--ink-soft); margin-top:14px; font-size:15.5px;}
+
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid; grid-template-columns:280px 1fr; gap:56px;}
+  @media (max-width:760px){.about-grid{grid-template-columns:1fr;}}
+  .stat-card{
+    border:1px solid var(--line); background:var(--paper);
+    padding:22px; border-radius:var(--radius);
+  }
+  .stat-row{
+    display:flex; justify-content:space-between; padding:10px 0;
+    border-bottom:1px dashed var(--line);
+    font-family:'IBM Plex Mono', monospace; font-size:13px;
+  }
+  .stat-row:last-child{border-bottom:none;}
+  .stat-row .k{color:var(--ink-soft);}
+  .stat-row .v{color:var(--ink); font-weight:500; text-align:right;}
+  .about-text p{margin:0 0 18px; color:var(--ink-soft); font-size:16.5px;}
+  .about-text strong{color:var(--ink); font-weight:600;}
+  .about-text em{color:var(--navy-2); font-style:normal; border-bottom:1px solid var(--gold-soft);}
+
+  /* ---------- EXPERIENCE (ledger) ---------- */
+  .ledger{border-top:1px solid var(--line);}
+  .ledger-row{
+    display:grid; grid-template-columns:140px 1fr; gap:24px;
+    padding:26px 0; border-bottom:1px solid var(--line);
+  }
+  @media (max-width:640px){.ledger-row{grid-template-columns:1fr;}}
+  .ledger-date{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--gold); white-space:nowrap;}
+  .ledger-role{font-family:'Fraunces',serif; font-weight:600; font-size:19px; margin-bottom:6px;}
+  .ledger-org{color:var(--ink-soft); font-size:14px; margin-bottom:12px; font-family:'IBM Plex Mono', monospace;}
+  .ledger ul{margin:0; padding-left:18px; color:var(--ink-soft); font-size:15px;}
+  .ledger li{margin-bottom:6px;}
+
+  /* ---------- PROJECTS ---------- */
+  #projects-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px;}
+  @media (max-width:760px){#projects-grid{grid-template-columns:1fr;}}
+  .card{
+    border:1px solid var(--line); background:var(--paper);
+    padding:28px; border-radius:var(--radius);
+    display:flex; flex-direction:column;
+  }
+  .card.featured{grid-column:1 / -1; background:var(--navy); color:#EDEAE0; border-color:var(--navy);}
+  .card.featured .ledger-org, .card.featured .tag{color:#B9BECC;}
+  .card-badge{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--gold); border:1px solid var(--gold);
+    padding:4px 10px; border-radius:20px; display:inline-block; margin-bottom:14px; width:fit-content;
+  }
+  .card.featured .card-badge{color:var(--gold-soft); border-color:var(--gold-soft);}
+  .card h3{font-size:22px; margin-bottom:10px;}
+  .card p{color:var(--ink-soft); font-size:15px; margin:0 0 14px;}
+  .card.featured p{color:#C9CDD9;}
+  .tags{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px;}
+  .tag{
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px;
+    color:var(--ink-soft); border:1px solid var(--line); padding:4px 10px; border-radius:20px;
+  }
+  .card.featured .tag{border-color:rgba(255,255,255,0.25);}
+  .card-links{display:flex; gap:12px; margin-top:auto; flex-wrap:wrap;}
+
+  /* ---------- WRITING ---------- */
+  .writing-top{
+    display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap;
+    margin-bottom:36px;
+  }
+  #memo-grid, #posts-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+  @media (max-width:820px){#memo-grid, #posts-grid{grid-template-columns:1fr;}}
+  #posts-grid{margin-bottom:36px;}
+  .memo-card a{text-decoration:none;}
+  .memo-card .memo-date{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-soft);}
+  .writing-sub{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; text-transform:uppercase;
+    letter-spacing:0.1em; color:var(--gold); margin:0 0 16px;
+  }
+  .memo-card{
+    border:1px dashed var(--line); padding:22px; border-radius:var(--radius);
+    background:var(--paper);
+  }
+  .memo-card.live{border-style:solid; border-color:var(--line);}
+  .memo-type{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ledger); text-transform:uppercase; letter-spacing:0.08em;}
+  .memo-card h4{font-family:'Fraunces',serif; font-size:17px; font-weight:600; margin:8px 0 6px;}
+  .memo-card .memo-status{font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--ink-soft); margin-top:10px; display:block;}
+
+  /* ---------- SKILLS ---------- */
+  .skill-groups{display:grid; grid-template-columns:repeat(4,1fr); gap:28px;}
+  @media (max-width:820px){.skill-groups{grid-template-columns:1fr 1fr;}}
+  @media (max-width:480px){.skill-groups{grid-template-columns:1fr;}}
+  .skill-group h4{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; text-transform:uppercase;
+    letter-spacing:0.1em; color:var(--gold); margin-bottom:14px;
+  }
+  .skill-group .tags{margin-bottom:0;}
+
+  /* ---------- BEYOND THE DESK ---------- */
+  .interest-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+  @media (max-width:760px){.interest-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:480px){.interest-grid{grid-template-columns:1fr;}}
+  .interest-card{
+    border:1px solid var(--line); padding:20px; border-radius:var(--radius); background:var(--paper);
+  }
+  .interest-card .ic-mark{font-size:22px; margin-bottom:10px; display:block;}
+  .interest-card h4{font-family:'Fraunces',serif; font-weight:600; font-size:16px; margin-bottom:6px;}
+  .interest-card p{color:var(--ink-soft); font-size:13.5px; margin:0;}
+
+  /* ---------- CV ---------- */
+  .cv-card{
+    border:1px solid var(--line-dark); background:var(--navy); color:#EDEAE0;
+    padding:44px; border-radius:var(--radius);
+    display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap;
+  }
+  .cv-card .cv-left .mono{color:var(--gold-soft); font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase;}
+  .cv-card h3{font-size:26px; color:#F6F3EA; margin-top:10px;}
+  .cv-card p{color:#B9BECC; margin-top:8px; font-size:14.5px; max-width:420px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--navy); color:#B9BECC; padding:56px 0 32px;}
+  .footer-grid{display:flex; justify-content:space-between; flex-wrap:wrap; gap:32px; margin-bottom:36px;}
+  .footer-brand h3{color:#F6F3EA; font-size:22px;}
+  .footer-brand p{font-family:'IBM Plex Mono', monospace; font-size:12.5px; margin-top:8px; color:#8B93A8;}
+  .footer-links{display:flex; gap:24px; flex-wrap:wrap;}
+  .footer-links a{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; text-transform:uppercase; letter-spacing:0.06em;
+    text-decoration:none; color:#C9CDD9; border-bottom:1px solid transparent;
+  }
+  .footer-links a:hover{border-color:var(--gold-soft); color:#F6F3EA;}
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,0.1); padding-top:22px;
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:#707892;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo">TG<span>.</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#writing">Writing</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#cv">CV</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div class="eyebrow">Milan, Italy (from Sept 2026) · Mumbai, India</div>
+    <h1>Tanmay Gambhir</h1>
+    <p class="role">Chartered Accountant and ex-PwC Management Consultant, now trading spreadsheets for a Bocconi × ESSEC classroom. I spend my time where <strong>finance, strategy and AI</strong> overlap — reading term sheets for fun, writing about markets, and building tools that do due diligence faster than I can.</p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">See what I've built</a>
+      <a href="#cv" class="btn btn-ghost">Download CV</a>
+      <a href="https://substack.com/@tanmaydiary/posts" target="_blank" rel="noopener" class="btn btn-ghost">Read my writing</a>
+    </div>
+  </div>
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track" id="tickerTrack"></div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="stat-card">
+          <div class="stat-row"><span class="k">STATUS</span><span class="v">Incoming, Bocconi × ESSEC</span></div>
+          <div class="stat-row"><span class="k">COHORT</span><span class="v">25 selected, Double Degree</span></div>
+          <div class="stat-row"><span class="k">CREDENTIAL</span><span class="v">CA (First Attempt), 2024</span></div>
+          <div class="stat-row"><span class="k">MARKETS</span><span class="v">CFA Level I, Passed</span></div>
+          <div class="stat-row"><span class="k">LANGUAGES</span><span class="v">EN · HI · MR · IT (A1) · DE (A2)</span></div>
+          <div class="stat-row"><span class="k">BASE</span><span class="v">Mumbai → Milan</span></div>
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <span class="section-num">01 / ABOUT</span>
+        <h2 style="margin-bottom:20px;">A numbers person who ended up liking words too.</h2>
+        <p>I qualified as a Chartered Accountant on my first attempt, then spent four years at <strong>PwC</strong> inside Finance Transformation and GCC Advisory — the part of consulting where you're rebuilding how a company actually reports and reconciles, not just advising on it from a slide. Along the way I helped unlock <strong>₹20 Cr in working capital</strong> for a retail client and shaved a seven-day finance close down to one.</p>
+        <p>Somewhere in that process I got pulled toward the earlier, messier end of finance — venture capital and private equity, where the numbers are still being invented rather than reconciled. That pull is why I built <em>VC-Lab</em>, why I write about markets on the side, and why I'm now one of 25 students in the Bocconi × ESSEC Double Degree, using it to build a bridge between Indian markets and European ones.</p>
+        <p>Outside of spreadsheets: I've run workshops and mentored early-career women through PwC's community programs, I'm slowly getting functional in Italian and German ahead of the move to Milan, and I follow Indian equities the way other people follow sport.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="experience">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-num">02 / EXPERIENCE</span>
+      <h2>Where the last four years went</h2>
+    </div>
+    <div class="ledger reveal">
+      <div class="ledger-row">
+        <div class="ledger-date">2022 — 2026</div>
+        <div>
+          <div class="ledger-role">Management Consultant, Finance Transformation &amp; GCC Advisory</div>
+          <div class="ledger-org">Price Waterhouse Chartered Accountants LLP, Mumbai</div>
+          <ul>
+            <li>Designed an enterprise performance management framework for a leading electronics retailer — six executive dashboards, 70+ drill-down reports, ₹20 Cr in working capital unlocked via DSO reduction and supplier payment redesign.</li>
+            <li>Rebuilt FP&amp;A reporting for an aerospace &amp; defence client using LLM-assisted workflow redesign — 50+ hours saved, reporting accelerated by a full month.</li>
+            <li>Standardized 10+ finance processes across Global Capability Center transformations, cutting turnaround time by 35%.</li>
+            <li>Ran Day-1 finance operations through a major transformation, compressing close from 7 days to 1 for 100+ employees in transition.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="ledger-row">
+        <div class="ledger-date">2020 — 2022</div>
+        <div>
+          <div class="ledger-role">Articled Assistant, Assurance</div>
+          <div class="ledger-org">Price Waterhouse Chartered Accountants LLP, Mumbai</div>
+          <ul>
+            <li>Front-loaded substantive testing during interim audits and enforced a "first time right" data approach, cutting sign-off timelines by 4 days and earning PwC's Above &amp; Beyond recognition (top 5% of associates).</li>
+          </ul>
+        </div>
+      </div>
+      <div class="ledger-row">
+        <div class="ledger-date">2022 — 2026</div>
+        <div>
+          <div class="ledger-role">Volunteer, Community &amp; Education Programs</div>
+          <div class="ledger-org">PwC Foundation, Mumbai</div>
+          <ul>
+            <li>Delivered quarterly workshops for 100+ underprivileged children and mentored 45+ women on professional development and employability.</li>
+            <li>Led monthly beach cleanup drives as part of an ongoing environmental sustainability initiative.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-num">03 / PROJECTS</span>
+      <h2>Things I've built</h2>
+      <p>Mostly at the intersection of financial modeling and AI — tools that replicate workflows I used to do by hand.</p>
+    </div>
+    <div id="projects-grid" class="reveal"></div>
+  </div>
+</section>
+
+<section class="alt" id="writing">
+  <div class="wrap">
+    <div class="writing-top reveal">
+      <div class="section-head" style="margin-bottom:0;">
+        <span class="section-num">04 / WRITING</span>
+        <h2>The Memo Vault</h2>
+        <p>I write on Substack about markets, VC/PE mechanics, and the India–Europe angle. I'm also building out a public archive of investment memos, DCFs and LBO models — real analytical work, not just commentary.</p>
+      </div>
+      <a href="https://substack.com/@tanmaydiary/posts" target="_blank" rel="noopener" class="btn btn-dark">Read on Substack →</a>
+    </div>
+    <p class="writing-sub reveal">Latest from Substack</p>
+    <div id="posts-grid" class="reveal"></div>
+    <p class="writing-sub reveal">Memo Vault — models &amp; memos</p>
+    <div id="memo-grid" class="reveal"></div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-num">05 / SKILLS</span>
+      <h2>Toolkit</h2>
+    </div>
+    <div class="skill-groups reveal">
+      <div class="skill-group">
+        <h4>Finance</h4>
+        <div class="tags">
+          <span class="tag">Financial Modeling</span><span class="tag">DCF / LBO</span>
+          <span class="tag">FP&A</span><span class="tag">Valuation</span>
+          <span class="tag">Finance Transformation</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Tech &amp; AI</h4>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">SQL</span>
+          <span class="tag">Streamlit</span><span class="tag">Power BI</span>
+          <span class="tag">Prompt Engineering</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Languages</h4>
+        <div class="tags">
+          <span class="tag">English</span><span class="tag">Hindi</span>
+          <span class="tag">Marathi</span><span class="tag">Italian (A1)</span>
+          <span class="tag">German (A2)</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Certifications</h4>
+        <div class="tags">
+          <span class="tag">CA — ICAI</span><span class="tag">CFA Level I</span>
+          <span class="tag">J.P. Morgan — IB</span><span class="tag">Yale — Fin. Markets</span>
+          <span class="tag">McKinsey Forward</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="beyond">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-num">06 / BEYOND THE DESK</span>
+      <h2>Off the clock</h2>
+      <p><em style="color:var(--ink-soft); font-style:italic;">(placeholder content below — tell me your actual hobbies/interests and I'll swap these in)</em></p>
+    </div>
+    <div class="interest-grid reveal">
+      <div class="interest-card">
+        <span class="ic-mark">📈</span>
+        <h4>Indian equities</h4>
+        <p>I follow Indian markets the way other people follow a sports league — mostly for the storylines, occasionally for the P&L.</p>
+      </div>
+      <div class="interest-card">
+        <span class="ic-mark">🗣️</span>
+        <h4>Languages</h4>
+        <p>Learning Italian and German ahead of the Milan move — currently better at reading menus than holding meetings.</p>
+      </div>
+      <div class="interest-card">
+        <span class="ic-mark">🤝</span>
+        <h4>Mentoring</h4>
+        <p>A few years of PwC Foundation workshops taught me I like teaching almost as much as modeling.</p>
+      </div>
+      <div class="interest-card">
+        <span class="ic-mark">🧭</span>
+        <h4>India ↔ Europe</h4>
+        <p>Grew up between Oman and India; now building the case for why that cross-border lens matters in VC and PE.</p>
+      </div>
+      <div class="interest-card">
+        <span class="ic-mark">🛠️</span>
+        <h4>Weekend builds</h4>
+        <p>Side projects like a career-pipeline tracker and a language-progress tracker — I'd rather build the spreadsheet than fill it in.</p>
+      </div>
+      <div class="interest-card">
+        <span class="ic-mark">✍️</span>
+        <h4>Writing</h4>
+        <p>Substack as a way to think out loud about markets before the thinking has to be "client-ready."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cv">
+  <div class="wrap">
+    <div class="cv-card reveal">
+      <div class="cv-left">
+        <span class="mono">Full Record</span>
+        <h3>The one-page version</h3>
+        <p>Everything above, compressed to a PDF a recruiter can skim in ninety seconds.</p>
+      </div>
+      <a href="cv.pdf" download="Tanmay_Gambhir_CV.pdf" class="btn btn-primary">Download CV (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>Tanmay Gambhir</h3>
+        <p class="mono">tanmaygambhir37@gmail.com</p>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:tanmaygambhir37@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/tanmay-g-5432ba203/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/tanmaygambhir37-design" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://substack.com/@tanmaydiary/posts" target="_blank" rel="noopener">Substack</a>
+        <a href="https://vc-lab-5mg6vkhrt7uucrxjnowfe3.streamlit.app/" target="_blank" rel="noopener">VC-Lab</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Built from scratch, not a template · 2026</span>
+      <span>Mumbai → Milan</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ---------------------------------------------------------------
+// EDIT ME: Projects — add new entries here as you build more
+// ---------------------------------------------------------------
+const PROJECTS = [
+  {
+    featured: true,
+    badge: "Live",
+    title: "VC-Lab — AI Venture Capital Due Diligence Platform",
+    desc: "An end-to-end VC due diligence workflow — sourcing, screening, valuation and portfolio analysis — in one dashboard. Pulls startup data straight from a company's website into a screening model, then runs scorecards, VC Method valuation, cap table modeling, IRR/MOIC portfolio analysis and auto-generates an investment memo.",
+    tags: ["Python", "Streamlit", "Pandas", "Plotly", "OpenAI GPT", "Claude", "Financial Modeling"],
+    links: [
+      { label: "Live Demo →", url: "https://vc-lab-5mg6vkhrt7uucrxjnowfe3.streamlit.app/", primary: true },
+      { label: "GitHub", url: "https://github.com/tanmaygambhir37-design/VC-Lab" }
+    ]
+  },
+  {
+    featured: false,
+    badge: "🏆 Rank 1/12",
+    title: "Solar Energy Solutions for Residential Buildings",
+    desc: "A team business proposal built during ICAI's GMCS orientation. Led the financial viability workstream: a 10-year cash flow model showing a 5-year break-even and 12% IRR against an 8% fixed-deposit alternative, stress-tested across 20+ variables.",
+    tags: ["Excel", "DCF", "IRR", "Sensitivity Analysis"],
+    links: []
+  }
+];
+
+// Memo Vault loads from memos.json — edit that file, not this one.
+const MEMOS_FALLBACK = [
+  { type: "Investment Memo", title: "First public memo", live: false },
+  { type: "DCF Model", title: "First DCF teardown", live: false },
+  { type: "LBO Case", title: "First LBO writeup", live: false }
+];
+
+const TICKER_ITEMS = [
+  { text: "CA · FIRST ATTEMPT", cls: "up" },
+  { text: "CFA LEVEL I · PASSED", cls: "up" },
+  { text: "BOCCONI × ESSEC · 25 / COHORT", cls: "flat" },
+  { text: "₹20CR · WORKING CAPITAL UNLOCKED", cls: "up" },
+  { text: "VC-LAB · LIVE", cls: "up" },
+  { text: "ITALIAN A1 · GERMAN A2", cls: "flat" },
+  { text: "CLOSE CYCLE · 7D → 1D", cls: "up" },
+  { text: "SUBSTACK · @TANMAYDIARY", cls: "flat" }
+];
+
+function renderProjects(){
+  const grid = document.getElementById('projects-grid');
+  grid.innerHTML = PROJECTS.map(p => `
+    <div class="card ${p.featured ? 'featured' : ''}">
+      <span class="card-badge">${p.badge}</span>
+      <h3>${p.title}</h3>
+      <p>${p.desc}</p>
+      <div class="tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+      ${p.links.length ? `<div class="card-links">${p.links.map(l => `<a href="${l.url}" target="_blank" rel="noopener" class="btn ${l.primary ? 'btn-primary' : 'btn-ghost'}">${l.label}</a>`).join('')}</div>` : ''}
+    </div>
+  `).join('');
+}
+
+function renderMemos(memos){
+  const grid = document.getElementById('memo-grid');
+  grid.innerHTML = memos.map(m => `
+    <div class="memo-card ${m.live ? 'live' : ''}">
+      <span class="memo-type">${m.type}</span>
+      <h4>${m.title}</h4>
+      ${m.live && m.file
+        ? `<a href="${m.file}" target="_blank" rel="noopener" class="memo-status" style="color:var(--gold);">Read now →</a>`
+        : `<span class="memo-status">Coming soon</span>`}
+    </div>
+  `).join('');
+}
+
+// ---- Auto-loaded content (no HTML edits needed to update) ----
+const GH_USER = 'tanmaygambhir37-design';
+const SUBSTACK_FEED = 'https://tanmaydiary.substack.com/feed';
+
+// Memo Vault: edit memos.json in the repo, drop PDFs in memos/
+fetch('memos.json')
+  .then(r => r.ok ? r.json() : Promise.reject())
+  .then(renderMemos)
+  .catch(() => renderMemos(MEMOS_FALLBACK));
+
+// GitHub: any public repo (with a description) not already shown above gets a card
+fetch(`https://api.github.com/users/${GH_USER}/repos?sort=updated&per_page=30`)
+  .then(r => r.ok ? r.json() : Promise.reject())
+  .then(repos => {
+    const shown = PROJECTS.flatMap(p => p.links.map(l => l.url.toLowerCase()));
+    const cards = repos
+      .filter(r => !r.fork && r.description && !shown.includes(r.html_url.toLowerCase()))
+      .map(r => `
+        <div class="card">
+          <span class="card-badge">GitHub</span>
+          <h3>${r.name}</h3>
+          <p>${r.description}</p>
+          <div class="tags">${(r.language ? [r.language] : []).concat(r.topics || []).slice(0,5).map(t => `<span class="tag">${t}</span>`).join('')}</div>
+          <div class="card-links">
+            <a href="${r.html_url}" target="_blank" rel="noopener" class="btn btn-dark">View Repo →</a>
+            ${r.homepage ? `<a href="${r.homepage}" target="_blank" rel="noopener" class="btn btn-dark">Live →</a>` : ''}
+          </div>
+        </div>`).join('');
+    document.getElementById('projects-grid').insertAdjacentHTML('beforeend', cards);
+  })
+  .catch(() => {});
+
+// Substack: latest 3 posts via RSS (CORS proxy)
+fetch('https://api.allorigins.win/raw?url=' + encodeURIComponent(SUBSTACK_FEED))
+  .then(r => r.ok ? r.text() : Promise.reject())
+  .then(xml => {
+    const items = [...new DOMParser().parseFromString(xml, 'text/xml').querySelectorAll('item')].slice(0, 3);
+    if(!items.length) return Promise.reject();
+    document.getElementById('posts-grid').innerHTML = items.map(it => {
+      const get = tag => it.querySelector(tag)?.textContent || '';
+      const date = get('pubDate') ? new Date(get('pubDate')).toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric'}) : '';
+      return `
+        <a href="${get('link')}" target="_blank" rel="noopener">
+          <div class="memo-card live">
+            <span class="memo-date">${date}</span>
+            <h4>${get('title')}</h4>
+            <span class="memo-status" style="color:var(--gold);">Read on Substack →</span>
+          </div>
+        </a>`;
+    }).join('');
+  })
+  .catch(() => {
+    document.getElementById('posts-grid').innerHTML =
+      `<div class="memo-card"><span class="memo-type">Substack</span><h4>Latest posts</h4><a href="https://substack.com/@tanmaydiary/posts" target="_blank" rel="noopener" class="memo-status" style="color:var(--gold);">Read on Substack →</a></div>`;
+  });
+
+function renderTicker(){
+  const track = document.getElementById('tickerTrack');
+  const build = () => TICKER_ITEMS.map(i => `<span class="ticker-item"><span class="${i.cls}">${i.cls === 'up' ? '▲' : '●'}</span> ${i.text}</span>`).join('');
+  track.innerHTML = build() + build(); // duplicated for seamless loop
+}
+
+renderProjects();
+renderTicker();
+
+// Mobile nav toggle
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+// Scroll-spy
+const sections = document.querySelectorAll('section[id]');
+const navAnchors = document.querySelectorAll('.nav-links a');
+const spy = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      const id = entry.target.getAttribute('id');
+      navAnchors.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+    }
+  });
+}, { rootMargin: '-40% 0px -50% 0px' });
+sections.forEach(s => spy.observe(s));
+
+// Reveal on scroll
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('in');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+</script>
+
+</body>
+</html>
