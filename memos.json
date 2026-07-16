@@ -1,5 +1,23 @@
 [
-  { "type": "Investment Memo", "title": "First public memo", "live": false, "file": "" },
-  { "type": "DCF Model", "title": "First DCF teardown", "live": false, "file": "" },
-  { "type": "LBO Case", "title": "First LBO writeup", "live": false, "file": "" }
+  {
+    "type": "Investment Memo",
+    "title": "Dust — Series B Follow-On Review",
+    "meta": "July 2026 · 22 pages",
+    "live": true,
+    "file": "investment-research/dust/"
+  },
+  {
+    "type": "1-Page Summary",
+    "title": "Dust — Summary (PDF)",
+    "meta": "July 2026 · PDF",
+    "live": true,
+    "file": "investment-research/dust/summary.pdf"
+  },
+  {
+    "type": "Coverage",
+    "title": "All research — coverage page",
+    "meta": "Independent · Source-cited",
+    "live": true,
+    "file": "investment-research/"
+  }
 ]
