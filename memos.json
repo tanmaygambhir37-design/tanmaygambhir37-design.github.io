@@ -14,6 +14,27 @@
     "file": "investment-research/dust/summary.pdf"
   },
   {
+    "type": "LBO Model",
+    "title": "Recordati — Independent LBO Underwrite (v3)",
+    "meta": "July 2026 · ~15% IRR / ~2.0x · PARTICIPATE",
+    "live": true,
+    "file": "investment-research/recordati/"
+  },
+  {
+    "type": "DCF Model",
+    "title": "Technogym — DCF Valuation (v3)",
+    "meta": "July 2026 · €15.72 · HOLD",
+    "live": true,
+    "file": "investment-research/technogym/"
+  },
+  {
+    "type": "Red-Team",
+    "title": "Partner Red-Team Review — Both Models",
+    "meta": "July 2026 · Adversarial review",
+    "live": true,
+    "file": "investment-research/red-team/"
+  },
+  {
     "type": "Coverage",
     "title": "All research — coverage page",
     "meta": "Independent · Source-cited",
