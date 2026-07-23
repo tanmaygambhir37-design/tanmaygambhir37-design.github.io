@@ -169,6 +169,12 @@
   .about-text p{margin:0 0 18px; color:var(--text-2); font-size:16.5px;}
   .about-text strong{color:var(--text); font-weight:600;}
   .about-text em{color:var(--gold); font-style:normal;}
+  .thesis-block{
+    margin-top:8px; padding:20px 24px;
+    border-left:2px solid var(--gold); background:var(--card);
+    border-radius:0 var(--radius) var(--radius) 0;
+  }
+  .thesis-block p{margin:0; font-size:16px; color:var(--text-2); line-height:1.75;}
 
   /* ---------- EXPERIENCE ---------- */
   .ledger-row{
@@ -237,13 +243,23 @@
   }
 
   /* ---------- SKILLS ---------- */
-  .skill-groups{display:grid; grid-template-columns:repeat(2,1fr); gap:28px;}
-  @media (max-width:640px){.skill-groups{grid-template-columns:1fr;}}
-  .skill-group{border:1px solid var(--line); background:var(--card); border-radius:var(--radius); padding:24px;}
+  .skill-groups{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:20px;}
+  .skill-group{
+    display:block; text-decoration:none;
+    border:1px solid var(--line); background:var(--card); border-radius:var(--radius); padding:24px;
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  a.skill-group:hover{border-color:var(--gold); transform:translateY(-2px);}
   .skill-group h4{
     font-family:'JetBrains Mono', monospace; font-size:12px; text-transform:uppercase; font-weight:500;
-    letter-spacing:0.1em; color:var(--gold); margin-bottom:14px;
+    letter-spacing:0.1em; color:var(--gold); margin-bottom:12px;
   }
+  .skill-group p{margin:0 0 14px; color:var(--text-2); font-size:14.5px;}
+  .skill-proof{
+    font-family:'JetBrains Mono', monospace; font-size:12.5px; color:var(--text-2);
+    display:block; padding-top:12px; border-top:1px dashed var(--line);
+  }
+  a.skill-group .skill-proof{color:var(--gold);}
   .skill-group .tags{margin-bottom:0;}
 
   /* ---------- CV ---------- */
@@ -332,8 +348,10 @@
         <span class="section-num">01 / About</span>
         <h2 style="margin-bottom:20px;">Background</h2>
         <p>Four years at PwC Mumbai taught me what companies look like from the inside. I started in audit, qualified as a <strong>CA on the first attempt</strong>, then spent three years rebuilding finance functions. One project freed <strong>₹20 Cr of working capital</strong> for a retailer, another took a 7-day financial close down to 1 day.</p>
-        <p>But consulting shows you a company after the decisions are made. The judgment I want to learn happens earlier. Should this deal be done at all, and at what price? So I started doing that work in public: a full venture memo on Dust, a €10.7bn Leveraged Buyout (LBO) rebuilt from scratch, and a Discounted Cash Flow (DCF) model where my own math talked me out of my initial thesis.</p>
-        <p>In September I start the Bocconi × ESSEC double degree (one of 25 selected). Outside work: four years with PwC Foundation running education workshops and mentoring 45+ women on employability. Currently learning Italian and German for the move to Milan.</p>
+        <p>But consulting shows you a company after the decisions are made. The judgment I want to learn happens earlier: should this deal be done at all, and at what price. So I started doing that work in public: a venture memo on Dust, a €10.7bn Leveraged Buyout (LBO) rebuilt from scratch, and a Discounted Cash Flow (DCF) model where my own math talked me out of my initial thesis. In September I start the Bocconi × ESSEC double degree (one of 25 selected); outside work, four years with PwC Foundation mentoring 45+ women on employability, and now learning Italian and German for the move to Milan.</p>
+        <div class="thesis-block reveal">
+          <p>Most stories about a business are true and not the point. I care about the two or three numbers that actually decide whether a deal works, and what has to stay true for them to hold. Red-teaming my own work isn't a formality at the end, it's the only part of the process that tells me if I'm right for the right reasons.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -413,40 +431,29 @@
   <div class="wrap">
     <div class="section-head reveal">
       <span class="section-num">05 / Skills</span>
-      <h2>Toolkit</h2>
+      <h2>Not a list. Proof.</h2>
+      <p>Every claim below links to where I actually used it.</p>
     </div>
     <div class="skill-groups reveal">
-      <div class="skill-group">
+      <a href="investment-research/#modeling" class="skill-group">
         <h4>Financial Modeling</h4>
-        <div class="tags">
-          <span class="tag">DCF</span><span class="tag">LBO</span>
-          <span class="tag">3-Statement</span><span class="tag">VC Method &amp; Cap Tables</span>
-          <span class="tag">Business Valuation</span><span class="tag">FP&amp;A</span>
-        </div>
-      </div>
+        <p>DCF, LBO, 3-statement, scenario switches, sensitivity grids.</p>
+        <span class="skill-proof">→ 1,400+ live formulas across the Recordati and Technogym models</span>
+      </a>
+      <a href="https://vc-lab-5mg6vkhrt7uucrxjnowfe3.streamlit.app/" target="_blank" rel="noopener" class="skill-group">
+        <h4>Python &amp; Data</h4>
+        <p>Streamlit, Pandas, SQL, Power BI, LLM workflows.</p>
+        <span class="skill-proof">→ VC-Playbook, priced Bending Spoons within 4% of its IPO</span>
+      </a>
+      <a href="investment-research/red-team/" class="skill-group">
+        <h4>Investment Writing</h4>
+        <p>Investment-committee memos, adversarial reviews.</p>
+        <span class="skill-proof">→ The Dust memo and two red-team reviews that changed my own numbers</span>
+      </a>
       <div class="skill-group">
-        <h4>Data &amp; AI</h4>
-        <div class="tags">
-          <span class="tag">Python (Pandas, Streamlit, Plotly)</span><span class="tag">SQL</span>
-          <span class="tag">Power BI</span><span class="tag">Advanced Excel</span>
-          <span class="tag">LLM Workflows (GPT, Claude)</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <h4>Certifications</h4>
-        <div class="tags">
-          <span class="tag">CA, First Attempt (ICAI, 2024)</span><span class="tag">CFA Level I</span>
-          <span class="tag">J.P. Morgan: Investment Banking</span><span class="tag">Yale: Financial Markets</span>
-          <span class="tag">McKinsey Forward</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <h4>Languages</h4>
-        <div class="tags">
-          <span class="tag">English (Fluent)</span><span class="tag">Hindi (Native)</span>
-          <span class="tag">Marathi (Native)</span><span class="tag">Italian (A1)</span>
-          <span class="tag">German (A2, Goethe)</span>
-        </div>
+        <h4>Credentials</h4>
+        <p>The two that took an exam.</p>
+        <div class="tags"><span class="tag">CA, First Attempt</span><span class="tag">CFA Level I</span></div>
       </div>
     </div>
   </div>
@@ -507,7 +514,7 @@ const PROJECTS = [
     featured: false,
     badge: "Live tool",
     title: "VC-Playbook: Open-Source VC Learning Platform",
-    desc: "A live venture news hub (5 RSS sources, auto-detected funding rounds, weekly curated deals) plus a due-diligence simulator that walks the full early-stage workflow: weighted scorecard screening, three valuation methods (VC Method with dilution adjustment, ARR comparables, Bill Payne scorecard), round-by-round cap table dilution, MOIC/IRR returns modeling, and one-click IC memo PDFs. Validated against a real outcome: the comps module priced Bending Spoons' disclosed IPO numbers within 4% of the actual $18.4B listing.",
+    desc: "A venture platform I built end to end: a live deal-flow feed and a due-diligence simulator that screens, values, and models returns on an early-stage deal. I checked it against a real outcome before trusting it: the valuation module priced Bending Spoons on its disclosed numbers alone and landed within 4% of the actual $18.4B IPO.",
     tags: ["Python", "Streamlit", "Valuation", "Cap Tables", "Open Source"],
     links: [
       { label: "Open the tool →", url: "https://vc-lab-5mg6vkhrt7uucrxjnowfe3.streamlit.app/", primary: true },
@@ -562,7 +569,6 @@ function renderMemos(memos){
 renderProjects();
 
 // ---- Auto-loaded content (no HTML edits needed to update) ----
-const GH_USER = 'tanmaygambhir37-design';
 const SUBSTACK_FEED = 'https://tanmaydiary.substack.com/feed';
 
 // Memo list: edit memos.json in the repo (PDFs go in memos/, or link a URL)
@@ -570,30 +576,6 @@ fetch('memos.json')
   .then(r => r.ok ? r.json() : Promise.reject())
   .then(renderMemos)
   .catch(() => { document.getElementById('memo-grid').innerHTML = ''; });
-
-// GitHub: any public repo (with a description) not already shown above gets a card
-fetch(`https://api.github.com/users/${GH_USER}/repos?sort=updated&per_page=30`)
-  .then(r => r.ok ? r.json() : Promise.reject())
-  .then(repos => {
-    const shown = PROJECTS.flatMap(p => p.links.map(l => l.url.toLowerCase()));
-    const cards = repos
-      .filter(r => !r.fork && r.description && r.name !== 'tanmaygambhir37-design.github.io')
-      .filter(r => !shown.includes(r.html_url.toLowerCase()) && !(r.homepage && shown.some(u => r.homepage.toLowerCase().includes(u))))
-      .filter(r => !shown.some(u => u.includes(r.name.toLowerCase())))
-      .map(r => `
-        <div class="card">
-          <span class="card-badge">GitHub</span>
-          <h3>${r.name}</h3>
-          <p>${r.description}</p>
-          <div class="tags">${(r.language ? [r.language] : []).concat(r.topics || []).slice(0,5).map(t => `<span class="tag">${t}</span>`).join('')}</div>
-          <div class="card-links">
-            <a href="${r.html_url}" target="_blank" rel="noopener" class="btn btn-gold">View repo →</a>
-            ${r.homepage ? `<a href="${r.homepage}" target="_blank" rel="noopener" class="btn btn-gold">Live →</a>` : ''}
-          </div>
-        </div>`).join('');
-    document.getElementById('projects-grid').insertAdjacentHTML('beforeend', cards);
-  })
-  .catch(() => {});
 
 // Substack: latest 3 posts via RSS (CORS proxies, first that responds wins)
 const PROXIES = [
