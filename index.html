@@ -304,10 +304,11 @@
   <div class="wrap">
     <div class="eyebrow">Mumbai → Milan · Bocconi × ESSEC</div>
     <h1>Tanmay Gambhir</h1>
-    <p class="role">Chartered Accountant. Four years at <strong>PwC</strong> rebuilding finance functions for large companies. Now moving to the other side of the table: I write investment memos and build Discounted Cash Flow (DCF) and Leveraged Buyout (LBO) models on companies I find interesting, using only public sources. Starting the <strong>Bocconi × ESSEC</strong> Master in Management this September.</p>
+    <p class="role">Chartered Accountant. Four years at <strong>PwC</strong> rebuilding finance functions for large companies. Now moving to the other side of the table: I write investment memos and build Discounted Cash Flow (DCF) and Leveraged Buyout (LBO) models on companies I find interesting. Starting the <strong>Bocconi × ESSEC</strong> Master in Management this September.</p>
     <p class="ask">Looking for a 2027 summer internship in Private Equity, Investment Banking, or Venture Capital in Milan, London, Paris, or Singapore.</p>
     <div class="hero-cta">
       <a href="investment-research/" class="btn btn-primary">Read my research →</a>
+      <a href="https://vc-lab-5mg6vkhrt7uucrxjnowfe3.streamlit.app/" target="_blank" rel="noopener" class="btn btn-gold">Try VC-Playbook →</a>
       <a href="cv.pdf" download="Tanmay_Gambhir_CV.pdf" class="btn btn-gold">Download CV</a>
       <a href="mailto:tanmaygambhir37@gmail.com" class="btn">Email me</a>
     </div>
@@ -331,7 +332,7 @@
         <span class="section-num">01 / About</span>
         <h2 style="margin-bottom:20px;">Background</h2>
         <p>Four years at PwC Mumbai taught me what companies look like from the inside. I started in audit, qualified as a <strong>CA on the first attempt</strong>, then spent three years rebuilding finance functions. One project freed <strong>₹20 Cr of working capital</strong> for a retailer, another took a 7-day financial close down to 1 day.</p>
-        <p>But consulting shows you a company after the decisions are made. The judgment I want to learn happens earlier. Should this deal be done at all, and at what price? So I started doing that work in public: a full venture memo on Dust, a €10.7bn Leveraged Buyout (LBO) rebuilt from scratch, and a Discounted Cash Flow (DCF) model where my own math talked me out of my initial thesis. All from public sources, with all the working shown.</p>
+        <p>But consulting shows you a company after the decisions are made. The judgment I want to learn happens earlier. Should this deal be done at all, and at what price? So I started doing that work in public: a full venture memo on Dust, a €10.7bn Leveraged Buyout (LBO) rebuilt from scratch, and a Discounted Cash Flow (DCF) model where my own math talked me out of my initial thesis.</p>
         <p>In September I start the Bocconi × ESSEC double degree (one of 25 selected). Outside work: four years with PwC Foundation running education workshops and mentoring 45+ women on employability. Currently learning Italian and German for the move to Milan.</p>
       </div>
     </div>
@@ -396,7 +397,7 @@
       <div class="section-head" style="margin-bottom:0;">
         <span class="section-num">04 / Research &amp; Writing</span>
         <h2>Memos &amp; essays</h2>
-        <p>Investment memos and live financial models, all from public sources, plus a weekly Substack on markets and incentives.</p>
+        <p>Investment memos, live financial models, and a weekly Substack on markets and incentives.</p>
       </div>
       <a href="https://substack.com/@tanmaydiary/posts" target="_blank" rel="noopener" class="btn btn-gold">Substack →</a>
     </div>
@@ -404,7 +405,7 @@
     <div id="memo-grid" class="reveal"></div>
     <p class="writing-sub reveal" style="margin-top:36px;">Latest from Substack</p>
     <div id="posts-grid" class="reveal"></div>
-    <p class="disclaimer reveal">Research is independent, based solely on public sources, and not affiliated with or endorsed by any company covered. Nothing here is investment advice.</p>
+    <p class="disclaimer reveal">Independent research, not affiliated with or endorsed by any company covered. Nothing here is investment advice.</p>
   </div>
 </section>
 
@@ -494,8 +495,8 @@ const PROJECTS = [
     featured: true,
     badge: "Latest · July 2026",
     title: "Investment Research: Dust, Series B Follow-On Review",
-    desc: "A 22-page, source-cited memo on Dust, the Paris enterprise-AI agent platform: $20M+ ARR, a Sequoia-anchored cap table, and a moat being dissolved by the very standard (MCP) the market credits it for. Recommendation: invest, small follow-on, priced to a strategic-acquisition outcome. Written to a professional standard: every claim cited, every non-public number flagged.",
-    tags: ["Investment Memo", "Enterprise AI", "Venture Capital", "Public Sources"],
+    desc: "A 22-page memo on Dust, the Paris enterprise-AI agent platform: $20M+ ARR, a Sequoia-anchored cap table, and a moat being dissolved by the very standard (MCP) the market credits it for. Recommendation: invest, small follow-on, priced to a strategic-acquisition outcome.",
+    tags: ["Investment Memo", "Enterprise AI", "Venture Capital", "Due Diligence"],
     links: [
       { label: "Read the memo →", url: "investment-research/dust/", primary: true },
       { label: "Coverage page", url: "investment-research/" },
@@ -509,17 +510,21 @@ const PROJECTS = [
     desc: "A live venture news hub (5 RSS sources, auto-detected funding rounds, weekly curated deals) plus a due-diligence simulator that walks the full early-stage workflow: weighted scorecard screening, three valuation methods (VC Method with dilution adjustment, ARR comparables, Bill Payne scorecard), round-by-round cap table dilution, MOIC/IRR returns modeling, and one-click IC memo PDFs. Validated against a real outcome: the comps module priced Bending Spoons' disclosed IPO numbers within 4% of the actual $18.4B listing.",
     tags: ["Python", "Streamlit", "Valuation", "Cap Tables", "Open Source"],
     links: [
-      { label: "Live demo →", url: "https://vc-lab-5mg6vkhrt7uucrxjnowfe3.streamlit.app/", primary: true },
+      { label: "Open the tool →", url: "https://vc-lab-5mg6vkhrt7uucrxjnowfe3.streamlit.app/", primary: true },
       { label: "GitHub", url: "https://github.com/tanmaygambhir37-design/VC-Playbook" }
     ]
   },
   {
     featured: false,
-    badge: "Rank 1 / 12",
-    title: "Solar Energy Solutions for Residential Buildings",
-    desc: "A team business proposal at ICAI's GMCS orientation. I led the financial viability work: a 10-year cash flow model with a 5-year break-even and 12% IRR versus an 8% fixed deposit, tested across 20+ variables. It won Best Business Proposal.",
-    tags: ["Excel", "DCF", "IRR", "Sensitivity Analysis"],
-    links: []
+    badge: "Financial modeling",
+    title: "Two Deals, Rebuilt From Scratch",
+    desc: "A €10.7bn Recordati LBO and a Technogym DCF, built cell by cell in Excel and then red-teamed. In both, the model changed my mind: the LBO's celebrated bolt-on machine adds almost nothing to returns, and the DCF walked me down from BUY to HOLD. Both workbooks are downloadable, with the full research and adversarial review behind each one.",
+    tags: ["LBO", "DCF", "Excel", "Red-Teamed"],
+    links: [
+      { label: "Recordati LBO →", url: "investment-research/recordati/", primary: true },
+      { label: "Technogym DCF →", url: "investment-research/technogym/" },
+      { label: "Download the models", url: "investment-research/#modeling" }
+    ]
   }
 ];
 
