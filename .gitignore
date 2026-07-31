@@ -2,3 +2,5 @@
 *.jpeg
 .claude/
 Tanmay_Gambhir_Resume.pdf
+__pycache__/
+*.pyc

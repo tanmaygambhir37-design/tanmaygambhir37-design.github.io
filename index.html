@@ -3,8 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tanmay Gambhir</title>
-<meta name="description" content="Tanmay Gambhir: Chartered Accountant, four years at PwC, Bocconi × ESSEC MIM. Investment research and VC tools.">
+<title>Tanmay Gambhir — Investment Research &amp; Financial Modeling</title>
+<meta name="description" content="Tanmay Gambhir: Chartered Accountant, four years at PwC, Bocconi × ESSEC MIM. Investment memos, DCF and LBO models, and VC-Playbook.">
+<link rel="canonical" href="https://tanmaygambhir37-design.github.io/">
+
+<!-- Link previews. Without these a share on LinkedIn or WhatsApp renders as a
+     bare grey link, which is most of how this page gets seen. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tanmay Gambhir">
+<meta property="og:url" content="https://tanmaygambhir37-design.github.io/">
+<meta property="og:title" content="Tanmay Gambhir — Investment Research &amp; Financial Modeling">
+<meta property="og:description" content="Chartered Accountant, four years at PwC, now writing investment memos and building DCF and LBO models in public. Bocconi × ESSEC MIM.">
+<meta property="og:image" content="https://tanmaygambhir37-design.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Tanmay Gambhir — investment research, financial modeling, VC-Playbook.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tanmay Gambhir — Investment Research &amp; Financial Modeling">
+<meta name="twitter:description" content="Chartered Accountant, four years at PwC, now writing investment memos and building DCF and LBO models in public. Bocconi × ESSEC MIM.">
+<meta name="twitter:image" content="https://tanmaygambhir37-design.github.io/og-image.png">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#0F172A">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -535,15 +557,21 @@ const PROJECTS = [
   }
 ];
 
+// Everything below writes into innerHTML. memos.json and the Substack feed are
+// data, not markup — a title carrying an ampersand or a quote has to render as
+// text rather than break the element it sits in.
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c =>
+  ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' })[c]);
+
 function renderProjects(){
   const grid = document.getElementById('projects-grid');
   grid.innerHTML = PROJECTS.map(p => `
     <div class="card ${p.featured ? 'featured' : ''}">
-      <span class="card-badge">${p.badge}</span>
-      <h3>${p.title}</h3>
-      <p>${p.desc}</p>
-      <div class="tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
-      ${p.links.length ? `<div class="card-links">${p.links.map(l => `<a href="${l.url}" ${l.url.startsWith('http') ? 'target="_blank" rel="noopener"' : ''} class="btn ${l.primary ? 'btn-primary' : 'btn-gold'}">${l.label}</a>`).join('')}</div>` : ''}
+      <span class="card-badge">${esc(p.badge)}</span>
+      <h3>${esc(p.title)}</h3>
+      <p>${esc(p.desc)}</p>
+      <div class="tags">${p.tags.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>
+      ${p.links.length ? `<div class="card-links">${p.links.map(l => `<a href="${esc(l.url)}" ${l.url.startsWith('http') ? 'target="_blank" rel="noopener"' : ''} class="btn ${l.primary ? 'btn-primary' : 'btn-gold'}">${esc(l.label)}</a>`).join('')}</div>` : ''}
     </div>
   `).join('');
 }
@@ -551,16 +579,16 @@ function renderProjects(){
 function renderMemos(memos){
   const grid = document.getElementById('memo-grid');
   grid.innerHTML = memos.map(m => m.live && m.file
-    ? `<a href="${m.file}" ${m.file.startsWith('http') ? 'target="_blank" rel="noopener"' : ''}>
+    ? `<a href="${esc(m.file)}" ${m.file.startsWith('http') ? 'target="_blank" rel="noopener"' : ''}>
         <div class="memo-card">
-          <span class="memo-date">${m.meta || m.type}</span>
-          <h4>${m.title}</h4>
+          <span class="memo-date">${esc(m.meta || m.type)}</span>
+          <h4>${esc(m.title)}</h4>
           <span class="memo-status">Read →</span>
         </div>
       </a>`
     : `<div class="memo-card">
-        <span class="memo-type">${m.type}</span>
-        <h4>${m.title}</h4>
+        <span class="memo-type">${esc(m.type)}</span>
+        <h4>${esc(m.title)}</h4>
         <span class="memo-status" style="color:var(--muted);">In progress</span>
       </div>`
   ).join('');
@@ -569,7 +597,6 @@ function renderMemos(memos){
 renderProjects();
 
 // ---- Auto-loaded content (no HTML edits needed to update) ----
-const SUBSTACK_FEED = 'https://tanmaydiary.substack.com/feed';
 
 // Memo list: edit memos.json in the repo (PDFs go in memos/, or link a URL)
 fetch('memos.json')
@@ -577,35 +604,36 @@ fetch('memos.json')
   .then(renderMemos)
   .catch(() => { document.getElementById('memo-grid').innerHTML = ''; });
 
-// Substack: latest 3 posts via RSS (CORS proxies, first that responds wins)
-const PROXIES = [
-  'https://corsproxy.io/?url=',
-  'https://api.allorigins.win/raw?url='
-];
-PROXIES.reduce(
-  (chain, p) => chain.catch(() => fetch(p + encodeURIComponent(SUBSTACK_FEED)).then(r => r.ok ? r.text() : Promise.reject())),
-  Promise.reject()
-)
-  .then(xml => {
-    const items = [...new DOMParser().parseFromString(xml, 'text/xml').querySelectorAll('item')].slice(0, 3);
-    if(!items.length) return Promise.reject();
-    document.getElementById('posts-grid').innerHTML = items.map(it => {
-      const get = tag => it.querySelector(tag)?.textContent || '';
-      const date = get('pubDate') ? new Date(get('pubDate')).toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric'}) : '';
+// Substack: posts.json is refreshed daily by .github/workflows/substack.yml.
+// It is served from this origin, so the section renders with the page instead
+// of waiting on a third-party CORS proxy that may be down or rate-limiting.
+const SUBSTACK_URL = 'https://substack.com/@tanmaydiary/posts';
+
+const substackFallback = () => {
+  document.getElementById('posts-grid').innerHTML =
+    `<a href="${SUBSTACK_URL}" target="_blank" rel="noopener"><div class="memo-card"><span class="memo-type">Substack</span><h4>Weekly essays on markets, incentives and institutions</h4><span class="memo-status">Read on Substack →</span></div></a>`;
+};
+
+fetch('posts.json')
+  .then(r => r.ok ? r.json() : Promise.reject())
+  .then(posts => {
+    if(!Array.isArray(posts) || !posts.length) return Promise.reject();
+    document.getElementById('posts-grid').innerHTML = posts.map(p => {
+      const parsed = p.date ? new Date(p.date) : null;
+      const date = parsed && !isNaN(parsed)
+        ? parsed.toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric'})
+        : '';
       return `
-        <a href="${get('link')}" target="_blank" rel="noopener">
+        <a href="${esc(p.link)}" target="_blank" rel="noopener">
           <div class="memo-card">
-            <span class="memo-date">${date}</span>
-            <h4>${get('title')}</h4>
+            <span class="memo-date">${esc(date)}</span>
+            <h4>${esc(p.title)}</h4>
             <span class="memo-status">Read on Substack →</span>
           </div>
         </a>`;
     }).join('');
   })
-  .catch(() => {
-    document.getElementById('posts-grid').innerHTML =
-      `<a href="https://substack.com/@tanmaydiary/posts" target="_blank" rel="noopener"><div class="memo-card"><span class="memo-type">Substack</span><h4>Weekly essays on markets, incentives and institutions</h4><span class="memo-status">Read on Substack →</span></div></a>`;
-  });
+  .catch(substackFallback);
 
 // Last-updated stamp from the page's own HTTP Last-Modified
 try{
